@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-const MarqueeRow = ({ text, direction = "left", speed = 20 }: { text: string, direction?: "left" | "right", speed?: number }) => {
+export const MarqueeRow = ({ text, direction = "left", speed = 20 }: { text: string, direction?: "left" | "right", speed?: number }) => {
     const content = Array(4).fill(text).join(" ");
 
     return (
@@ -15,7 +15,7 @@ const MarqueeRow = ({ text, direction = "left", speed = 20 }: { text: string, di
                     repeat: Infinity,
                 }}
             >
-                <span className="text-7xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white/80 to-white/20 px-4 uppercase tracking-tighter">
+                <span className="text-7xl md:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-foreground/80 to-foreground/20 px-4 uppercase tracking-tighter">
                     {content}
                 </span>
             </motion.div>

@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
+import { MarqueeRow } from "./MarqueeSection";
 
 const footerLinks = {
   company: [
@@ -23,13 +24,25 @@ const socialLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="bg-card border-t border-border">
+    <footer className="bg-card border-t border-border w-full overflow-hidden">
+      <div className="py-8 border-b border-border/10 mb-8">
+        <MarqueeRow
+          text="VISUAL STORYTELLING • CREATIVE STRATEGY • BRAND IDENTITY • DIGITAL EXPERIENCES • "
+          direction="left"
+          speed={40}
+        />
+        <MarqueeRow
+          text="MOTION GRAPHICS • CINEMATIC PRODUCTION • WEB DEVELOPMENT • UI/UX DESIGN • "
+          direction="right"
+          speed={30}
+        />
+      </div>
       <div className="container mx-auto px-6 md:px-12 lg:px-20 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div className="lg:col-span-2">
             <h3 className="text-2xl font-bold mb-4 text-gradient-primary">Adrishyam Media</h3>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              True strength is not in sight but in the courage to see beyond the light. 
+              True strength is not in sight but in the courage to see beyond the light.
               We are your creative partners from ideation to execution.
             </p>
             <div className="flex gap-4">
@@ -45,13 +58,13 @@ export const Footer = () => {
               ))}
             </div>
           </div>
-          
+
           <div>
             <h4 className="font-bold mb-4">Company</h4>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <a 
+                  <a
                     href={link.href}
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
@@ -61,13 +74,13 @@ export const Footer = () => {
               ))}
             </ul>
           </div>
-          
+
           <div>
             <h4 className="font-bold mb-4">Resources</h4>
             <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
-                  <a 
+                  <a
                     href={link.href}
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
@@ -78,7 +91,7 @@ export const Footer = () => {
             </ul>
           </div>
         </div>
-        
+
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-sm">
             © Adrishyam Media copyright 2025

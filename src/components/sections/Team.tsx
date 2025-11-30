@@ -52,10 +52,8 @@ const itemVariants = {
 
 export const Team = () => {
   return (
-    <section className="section-padding relative bg-background overflow-hidden">
-      {/* Decorative Background */}
-      <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-[120px] -z-10" />
-      <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-blue-500/5 rounded-full blur-[100px] -z-10" />
+    <section className="section-padding relative overflow-hidden">
+      {/* Decorative Background Removed */}
 
       <div className="container mx-auto">
         <div className="max-w-7xl mx-auto">
@@ -85,7 +83,7 @@ export const Team = () => {
               <motion.div
                 key={member.name}
                 variants={itemVariants}
-                className="group relative h-[450px] w-full overflow-hidden rounded-2xl bg-muted/20"
+                className="group relative h-[450px] w-full overflow-hidden rounded-2xl"
               >
                 {/* Image */}
                 <div className="absolute inset-0 overflow-hidden">
