@@ -70,14 +70,15 @@ export const Loader = ({ onLoadingComplete }: LoaderProps) => {
           {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-2 h-2 bg-primary/30 rounded-full"
+              className="absolute w-2 h-2 bg-primary/40 rounded-full"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
               }}
               animate={{
                 y: [0, -30, 0],
-                opacity: [0.2, 0.8, 0.2],
+                opacity: [0.3, 0.8, 0.3],
+                scale: [1, 1.5, 1],
               }}
               transition={{
                 duration: 3 + Math.random() * 2,
@@ -99,7 +100,7 @@ export const Loader = ({ onLoadingComplete }: LoaderProps) => {
                   animate="visible"
                   className="text-5xl md:text-7xl lg:text-8xl font-bold text-gradient-primary inline-block"
                   style={{
-                    textShadow: "0 0 30px rgba(34, 211, 238, 0.5)",
+                    textShadow: "0 0 30px rgba(212, 175, 55, 0.6)",
                   }}
                 >
                   {letter}

@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Loader } from "@/components/Loader";
+import { AnimatedBackground } from "@/components/AnimatedBackground";
+import { StarField } from "@/components/StarField";
+import { NoiseTexture } from "@/components/NoiseTexture";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Expertise } from "@/components/sections/Expertise";
@@ -19,6 +22,11 @@ const Index = () => {
     <>
       {/* Loading Screen */}
       {isLoading && <Loader onLoadingComplete={() => setIsLoading(false)} />}
+      
+      {/* Animated Background Layers */}
+      <NoiseTexture />
+      <StarField />
+      <AnimatedBackground />
       
       {/* Main Content */}
       <div className="relative min-h-screen">

@@ -3,6 +3,7 @@ import { Film, Camera, Palette, Users } from "lucide-react";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SectionWrapper } from "../SectionWrapper";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -52,7 +53,8 @@ export const Services = () => {
   }, []);
   
   return (
-    <section ref={sectionRef} className="section-padding relative">
+    <SectionWrapper>
+      <section ref={sectionRef} className="section-padding relative">
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -96,5 +98,6 @@ export const Services = () => {
         </div>
       </div>
     </section>
+    </SectionWrapper>
   );
 };
