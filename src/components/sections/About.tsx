@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SectionWrapper } from "../SectionWrapper";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,8 +42,9 @@ export const About = () => {
   }, []);
   
   return (
-    <section ref={sectionRef} className="section-padding relative">
-      <div className="container mx-auto">
+    <SectionWrapper>
+      <section ref={sectionRef} className="section-padding relative">
+        <div className="container mx-auto">
         <div className="max-w-5xl mx-auto">
           {/* Section number */}
           <motion.div
@@ -102,5 +104,6 @@ export const About = () => {
         </div>
       </div>
     </section>
+    </SectionWrapper>
   );
 };

@@ -11,12 +11,12 @@ function AnimatedSphere() {
     <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
       <Sphere ref={meshRef} args={[1, 100, 100]} scale={2.5}>
         <MeshDistortMaterial
-          color="#22d3ee"
+          color="#d4af37"
           attach="material"
           distort={0.4}
           speed={2}
-          roughness={0.2}
-          metalness={0.8}
+          roughness={0.1}
+          metalness={0.9}
         />
       </Sphere>
     </Float>
@@ -41,17 +41,18 @@ function Particles() {
           itemSize={3}
         />
       </bufferGeometry>
-      <pointsMaterial size={0.05} color="#22d3ee" transparent opacity={0.6} />
+      <pointsMaterial size={0.05} color="#d4af37" transparent opacity={0.6} />
     </points>
   );
 }
 
 export const Scene3D = () => {
   return (
-    <div className="absolute inset-0 -z-10 opacity-40">
+    <div className="absolute inset-0 -z-10 opacity-30">
       <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[10, 10, 5]} intensity={1} />
+        <ambientLight intensity={0.3} />
+        <pointLight position={[10, 10, 5]} intensity={1} color="#d4af37" />
+        <pointLight position={[-10, -10, -5]} intensity={0.5} color="#b8860b" />
         <AnimatedSphere />
         <Particles />
         <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
