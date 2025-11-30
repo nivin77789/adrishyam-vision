@@ -1,50 +1,63 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Loader } from "@/components/Loader";
-import { AnimatedBackground } from "@/components/AnimatedBackground";
-import { StarField } from "@/components/StarField";
-import { NoiseTexture } from "@/components/NoiseTexture";
 import { Hero } from "@/components/sections/Hero";
-import { About } from "@/components/sections/About";
-import { Expertise } from "@/components/sections/Expertise";
-import { Services } from "@/components/sections/Services";
-import { WhyUs } from "@/components/sections/WhyUs";
-import { Testimonials } from "@/components/sections/Testimonials";
-import { Team } from "@/components/sections/Team";
-import { Showcase } from "@/components/sections/Showcase";
-import { Contact } from "@/components/sections/Contact";
-import { Footer } from "@/components/sections/Footer";
+import { Navbar } from "@/components/Navbar";
+
+// Lazy load heavy background components
+const ScrollScene = lazy(() => import("@/components/ScrollScene").then(module => ({ default: module.ScrollScene })));
+
+// Lazy load sections below the fold
+const MarqueeSection = lazy(() => import("@/components/sections/MarqueeSection").then(module => ({ default: module.MarqueeSection })));
+const About = lazy(() => import("@/components/sections/About").then(module => ({ default: module.About })));
+const Expertise = lazy(() => import("@/components/sections/Expertise").then(module => ({ default: module.Expertise })));
+const Services = lazy(() => import("@/components/sections/Services").then(module => ({ default: module.Services })));
+const WhyUs = lazy(() => import("@/components/sections/WhyUs").then(module => ({ default: module.WhyUs })));
+const Testimonials = lazy(() => import("@/components/sections/Testimonials").then(module => ({ default: module.Testimonials })));
+const Team = lazy(() => import("@/components/sections/Team").then(module => ({ default: module.Team })));
+const Showcase = lazy(() => import("@/components/sections/Showcase").then(module => ({ default: module.Showcase })));
+const Contact = lazy(() => import("@/components/sections/Contact").then(module => ({ default: module.Contact })));
+const Footer = lazy(() => import("@/components/sections/Footer").then(module => ({ default: module.Footer })));
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
-  
+
   return (
     <>
       {/* Loading Screen */}
       {isLoading && <Loader onLoadingComplete={() => setIsLoading(false)} />}
-      
-      {/* Animated Background Layers */}
-      <NoiseTexture />
-      <StarField />
-      <AnimatedBackground />
-      
+
+      {/* 3D Background Scene */}
+      <Suspense fallback={null}>
+        <ScrollScene />
+      </Suspense>
+
+      <Navbar />
+
       {/* Main Content */}
       <div className="relative min-h-screen">
         {/* Theme Toggle - Fixed Position */}
         <div className="fixed top-6 right-6 z-50">
           <ThemeToggle />
         </div>
-        
+
         <Hero />
-        <About />
-        <Expertise />
-        <Services />
-        <WhyUs />
-        <Testimonials />
-        <Team />
-        <Showcase />
-        <Contact />
-        <Footer />
+
+        <Suspense fallback={<div className="min-h-[20vh]" />}>
+          <MarqueeSection />
+        </Suspense>
+
+        <Suspense fallback={<div className="min-h-[50vh]" />}>
+          <About />
+          <Expertise />
+          <Services />
+          <WhyUs />
+          <Testimonials />
+          <Team />
+          <Showcase />
+          <Contact />
+          <Footer />
+        </Suspense>
       </div>
     </>
   );

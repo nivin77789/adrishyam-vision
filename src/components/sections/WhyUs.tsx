@@ -1,10 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Heart, Users, TrendingUp, Award } from "lucide-react";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const reasons = [
   {
@@ -30,56 +25,66 @@ const reasons = [
   },
 ];
 
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
 export const WhyUs = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    if (!sectionRef.current) return;
-    
-    const ctx = gsap.context(() => {
-      gsap.from(".why-card", {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-        },
-        y: 80,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-      });
-    }, sectionRef);
-    
-    return () => ctx.revert();
-  }, []);
-  
   return (
-    <section ref={sectionRef} className="section-padding relative bg-gradient-to-b from-background via-card/30 to-background">
+    <section className="section-padding relative bg-gradient-to-b from-background via-card/30 to-background">
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-8xl md:text-9xl font-bold text-primary/10 mb-8"
+            transition={{ duration: 0.6 }}
+            className="text-8xl md:text-[12rem] font-bold text-white/5 mb-4 select-none leading-none"
           >
-            04
+            07
           </motion.div>
-          
+
           <div className="mb-16">
             <h2 className="text-4xl md:text-6xl font-bold mb-6">Why Choose Us</h2>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl">
-              We are not an agency that simply delivers services. We become your creative partners from ideation 
-              to execution. We embed ourselves in your journey, ensuring every touchpoint is aligned, impactful, 
+              We are not an agency that simply delivers services. We become your creative partners from ideation
+              to execution. We embed ourselves in your journey, ensuring every touchpoint is aligned, impactful,
               and unforgettable.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
             {reasons.map((reason) => (
               <motion.div
                 key={reason.title}
                 className="why-card group"
+                variants={itemVariants}
                 whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
               >
                 <div className="bg-card border border-border rounded-3xl p-8 hover:border-primary/50 transition-all h-full">
                   <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
@@ -93,8 +98,8 @@ export const WhyUs = () => {
                 </div>
               </motion.div>
             ))}
-          </div>
-          
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -103,8 +108,8 @@ export const WhyUs = () => {
             className="text-center bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl p-12 border border-primary/20"
           >
             <p className="text-xl md:text-2xl text-muted-foreground mb-4 italic">
-              "We are not just running campaigns or creating content, you are building pride, connection, 
-              and enduring memories. At Adrishyam, we act as your creative conscience, bringing clarity, 
+              "We are not just running campaigns or creating content, you are building pride, connection,
+              and enduring memories. At Adrishyam, we act as your creative conscience, bringing clarity,
               consistency, and energy to every project."
             </p>
           </motion.div>

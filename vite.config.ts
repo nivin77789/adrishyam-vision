@@ -15,4 +15,17 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom", "react-router-dom"],
+          ui: ["@radix-ui/react-dialog", "@radix-ui/react-slot", "@radix-ui/react-label", "class-variance-authority", "clsx", "tailwind-merge"],
+          animations: ["framer-motion"],
+          three: ["three", "@react-three/fiber", "@react-three/drei"],
+        },
+      },
+    },
+  },
 }));

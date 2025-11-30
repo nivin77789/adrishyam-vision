@@ -1,103 +1,76 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Scene3D } from "../Scene3D";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
 
 export const Hero = () => {
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  
-  useEffect(() => {
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-    
-    tl.from(titleRef.current, {
-      y: 100,
-      opacity: 0,
-      duration: 1,
-      delay: 0.3,
-    })
-    .from(subtitleRef.current, {
-      y: 50,
-      opacity: 0,
-      duration: 0.8,
-    }, "-=0.5");
-  }, []);
-  
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <Scene3D />
-      
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background -z-20" />
-      
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 text-center z-10">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
-          <div className="inline-block px-6 py-2 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-sm mb-8">
-            <span className="text-primary font-semibold">Adrishyam Media</span>
-          </div>
-        </motion.div>
-        
-        <h1 
-          ref={titleRef}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
-        >
-          <span className="block">We are</span>
-          <span className="block text-gradient-primary">Adrishyam Media</span>
-        </h1>
-        
-        <p 
-          ref={subtitleRef}
-          className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 leading-relaxed"
-        >
-          True strength is not in sight but in the courage to see beyond the light. 
-          <br className="hidden md:block" />
-          We are your creative partners from ideation to execution.
-        </p>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <Button 
-            size="lg" 
-            className="group bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 rounded-full glow-primary transition-all"
-          >
-            Start Your Project
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-          </Button>
-          <Button 
-            size="lg" 
-            variant="outline" 
-            className="border-2 border-primary/30 hover:bg-primary/10 text-lg px-8 py-6 rounded-full transition-all"
-          >
-            View Our Work
-          </Button>
-        </motion.div>
-      </div>
-      
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <div className="w-6 h-10 border-2 border-primary/50 rounded-full flex justify-center pt-2">
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-background -z-20" />
+
+      <div className="container mx-auto px-6 md:px-12 lg:px-20 z-10">
+        <div className="max-w-4xl">
           <motion.div
-            className="w-1.5 h-1.5 bg-primary rounded-full"
-            animate={{ y: [0, 16, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-8 flex items-center gap-4"
+          >
+            <div className="h-[1px] w-12 bg-white/30" />
+            <span className="text-sm font-medium tracking-[0.2em] text-white/80 uppercase">
+              Creative Production Studio
+            </span>
+          </motion.div>
+
+          <h1 className="text-7xl md:text-9xl font-black mb-8 leading-[0.9] tracking-tighter">
+            <motion.div
+              className="overflow-hidden text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40"
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              WE ARE
+            </motion.div>
+            <motion.div
+              className="overflow-hidden text-transparent bg-clip-text bg-gradient-to-r from-white via-white/80 to-white/20 pb-2"
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              ADRISHYAM
+            </motion.div>
+          </h1>
+
+          <motion.p
+            className="text-xl md:text-2xl text-white/60 max-w-2xl mb-12 leading-relaxed font-light"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          >
+            Crafting visual experiences that transcend the ordinary.
+            We blend art and technology to tell stories that matter.
+          </motion.p>
+
+          <motion.div
+            className="flex flex-col sm:flex-row items-start gap-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <Button size="lg" className="bg-white text-black hover:bg-white/90 rounded-full px-8 py-7 text-lg font-semibold transition-all hover:scale-105 hover:shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]">
+              Start a Project
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+
+            <Button variant="ghost" size="lg" className="text-white hover:bg-white/5 rounded-full px-8 py-7 text-lg font-medium group">
+              <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center mr-4 group-hover:bg-white group-hover:text-black transition-colors">
+                <Play className="w-4 h-4 fill-current" />
+              </div>
+              View Showreel
+            </Button>
+          </motion.div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };
