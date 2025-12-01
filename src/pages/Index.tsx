@@ -1,4 +1,5 @@
 import { useState, lazy, Suspense } from "react";
+import { motion } from "framer-motion";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Loader } from "@/components/Loader";
 import { Hero } from "@/components/sections/Hero";
@@ -19,6 +20,9 @@ const Showcase = lazy(() => import("@/components/sections/Showcase").then(module
 const Contact = lazy(() => import("@/components/sections/Contact").then(module => ({ default: module.Contact })));
 const Footer = lazy(() => import("@/components/sections/Footer").then(module => ({ default: module.Footer })));
 
+const FAQ = lazy(() => import("@/components/sections/FAQ").then(module => ({ default: module.FAQ })));
+const Chatbot = lazy(() => import("@/components/Chatbot").then(module => ({ default: module.Chatbot })));
+
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -31,6 +35,18 @@ const Index = () => {
       <Suspense fallback={null}>
         <ScrollScene />
       </Suspense>
+
+      {/* Fixed Background Logo */}
+      <div className="fixed inset-0 z-[-5] flex items-center justify-center pointer-events-none overflow-hidden">
+        <motion.img
+          src="/3dlogo.png"
+          alt="Adrishyam Background Logo"
+          className="w-[60vw] md:w-[30vw] h-auto object-contain drop-shadow-[0_0_25px_rgba(255,255,255,0.1)]"
+          initial={{ opacity: 0.05 }}
+          animate={{ opacity: [0.05, 0.1, 0.05] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
 
       <Navbar />
 
@@ -55,8 +71,10 @@ const Index = () => {
           <Testimonials />
           <Team />
           <Showcase />
+          <FAQ />
           <Contact />
           <Footer />
+          <Chatbot />
         </Suspense>
       </div>
     </>

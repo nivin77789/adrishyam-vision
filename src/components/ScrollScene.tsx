@@ -11,8 +11,8 @@ const color = "#ffffff"; // White
 
 const Icosahedron = () => (
     <mesh rotation-x={0.35}>
-        <icosahedronGeometry args={[2.2, 0]} />
-        <meshBasicMaterial wireframe color={color} />
+        <icosahedronGeometry args={[1.8, 0]} />
+        <meshBasicMaterial wireframe color={color} transparent opacity={0.1} />
     </mesh>
 );
 
@@ -33,7 +33,7 @@ const Star = ({ p }: { p: number }) => {
     return (
         <mesh ref={ref}>
             <boxGeometry args={[0.05, 0.05, 0.05]} />
-            <meshBasicMaterial wireframe color={color} />
+            <meshBasicMaterial wireframe color={color} transparent opacity={0.1} />
         </mesh>
     );
 };
@@ -77,7 +77,7 @@ function Scene({ numStars = 100 }) {
 
 export const ScrollScene = () => {
     return (
-        <div className="fixed inset-0 -z-10">
+        <div className="fixed top-0 right-[calc(10%-60px)] h-full w-full md:w-1/2 -z-10">
             <Canvas gl={{ antialias: true, alpha: true }}>
                 <Scene />
             </Canvas>

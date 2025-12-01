@@ -41,6 +41,9 @@ export const Footer = () => {
       <div className="container mx-auto px-6 md:px-12 lg:px-20 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div className="lg:col-span-2">
+            <Link to="/" className="inline-block mb-6">
+              <img src="/logo.png" alt="Adrishyam Vision" className="h-16 w-auto object-contain" />
+            </Link>
             <h3 className="text-2xl font-bold mb-4 text-gradient-primary">Adrishyam Media</h3>
             <p className="text-muted-foreground leading-relaxed mb-6">
               True strength is not in sight but in the courage to see beyond the light.

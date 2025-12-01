@@ -19,14 +19,14 @@ export const Hero = () => {
     <section className="relative min-h-screen flex items-center overflow-hidden pt-20">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-background -z-20" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:160px_160px] opacity-20 [mask-image:linear-gradient(to_bottom,transparent,black)] -z-10" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:160px_160px] opacity-10 [mask-image:linear-gradient(to_bottom,transparent,black)] -z-10" />
 
       {/* Floating Media Icons */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
         {floatingIcons.map(({ Icon, top, left, right, bottom, delay }, index) => (
           <motion.div
             key={index}
-            className="absolute text-white/5"
+            className="absolute text-white/10"
             style={{ top, left, right, bottom }}
             initial={{ opacity: 0, scale: 0 }}
             animate={{
@@ -116,28 +116,8 @@ export const Hero = () => {
             </motion.div>
           </div>
 
-          {/* Right Image Element */}
-          <motion.div
-            className="lg:col-span-5 h-full min-h-[600px] w-full relative flex items-center justify-center"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          >
-            <motion.img
-              src="/3dlogo.png"
-              alt="Adrishyam 3D Logo"
-              className="w-full h-auto max-w-[500px] object-contain drop-shadow-2xl opacity-70"
-              animate={{
-                y: [0, -20, 0],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              whileHover={{ scale: 1.05, rotate: 2 }}
-            />
-          </motion.div>
+          {/* Right Image Element Removed */}
+          <div className="hidden lg:block lg:col-span-5" />
         </div>
       </div>
     </section>
