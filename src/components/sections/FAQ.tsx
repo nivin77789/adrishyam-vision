@@ -68,13 +68,7 @@ export const FAQ = () => {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <section className="py-24 bg-black relative overflow-hidden">
-            {/* Background Elements */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute top-1/4 -left-64 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]" />
-                <div className="absolute bottom-1/4 -right-64 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px]" />
-            </div>
-
+        <section className="py-24 relative overflow-hidden">
             <div className="container mx-auto px-6 relative z-10">
                 <div className="max-w-4xl mx-auto">
                     <motion.div
@@ -84,14 +78,14 @@ export const FAQ = () => {
                         className="text-center mb-16"
                     >
                         <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-                            Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Questions</span>
+                            Frequently Asked Questions
                         </h2>
                         <p className="text-white/60 text-lg max-w-2xl mx-auto">
                             Everything you need to know about our services and how we work.
                         </p>
                     </motion.div>
 
-                    <div className="bg-white/20 backdrop-blur-sm rounded-3xl p-6 md:p-10 border border-white/10">
+                    <div className="bg-black/40 backdrop-blur-md rounded-3xl p-6 md:p-10 border border-white/10">
                         {faqs.map((faq, index) => (
                             <FAQItem
                                 key={index}

@@ -12,7 +12,7 @@ const color = "#ffffff"; // White
 const Icosahedron = () => (
     <mesh rotation-x={0.35}>
         <icosahedronGeometry args={[1.8, 0]} />
-        <meshBasicMaterial wireframe color={color} transparent opacity={0.1} />
+        <meshBasicMaterial wireframe color={color} transparent opacity={1} />
     </mesh>
 );
 
@@ -33,7 +33,7 @@ const Star = ({ p }: { p: number }) => {
     return (
         <mesh ref={ref}>
             <boxGeometry args={[0.05, 0.05, 0.05]} />
-            <meshBasicMaterial wireframe color={color} transparent opacity={0.1} />
+            <meshBasicMaterial wireframe color={color} transparent opacity={1} />
         </mesh>
     );
 };
