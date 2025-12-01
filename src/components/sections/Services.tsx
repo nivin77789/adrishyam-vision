@@ -46,7 +46,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.8,
-      ease: [0.16, 1, 0.3, 1],
+      ease: [0.16, 1, 0.3, 1] as any,
     },
   },
 };
@@ -54,7 +54,7 @@ const itemVariants = {
 export const Services = () => {
   return (
     <SectionWrapper>
-      <section className="section-padding relative">
+      <section className="section-padding relative overflow-hidden">
         <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
             <motion.div
@@ -101,15 +101,16 @@ export const Services = () => {
                   key={service.title}
                   className="service-card group relative overflow-hidden rounded-none"
                   variants={itemVariants}
+                  whileHover={{ scale: 1.05, zIndex: 20 }}
                 >
                   {/* Background Image */}
                   <div className="absolute inset-0 z-0">
                     <img
                       src={service.image}
                       alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 opacity-50 group-hover:opacity-40"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-50"
                     />
-                    <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-500" />
+                    <div className="absolute inset-0 bg-black/80 group-hover:bg-black/40 transition-colors duration-500" />
                   </div>
 
                   <div className="relative z-10 p-10 h-[400px] flex flex-col justify-end border border-white/10 group-hover:border-white/30 transition-colors duration-500">
@@ -117,7 +118,14 @@ export const Services = () => {
                       <service.icon className="w-10 h-10 text-white" />
                     </div>
                     <h3 className="text-3xl font-bold mb-4 text-white tracking-tight">{service.title}</h3>
-                    <p className="text-white/70 leading-relaxed text-lg font-light">{service.description}</p>
+
+                    <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500">
+                      <div className="overflow-hidden">
+                        <p className="text-white/90 leading-relaxed text-lg font-light opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                          {service.description}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
               ))}

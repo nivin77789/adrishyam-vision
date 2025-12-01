@@ -46,7 +46,7 @@ const itemVariants = {
 
 export const Showcase = () => {
   return (
-    <section className="section-padding relative">
+    <section className="section-padding relative overflow-hidden">
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto">
           <motion.div

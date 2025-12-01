@@ -56,7 +56,7 @@ function Scene({ numStars = 100 }) {
             time.get() * 0.0005
         );
         camera.updateProjectionMatrix();
-        camera.lookAt(-3, 0, 0); // Look left to place object on the right
+        camera.lookAt(0, 0, 0);
     });
 
     // Removed low pixel ratio setting for sharp rendering

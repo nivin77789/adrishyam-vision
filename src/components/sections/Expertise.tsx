@@ -24,7 +24,8 @@ const itemVariants: Variants = {
 
 export const Expertise = () => {
   return (
-    <section className="section-padding relative bg-gradient-to-b from-background via-card/50 to-background">
+    <section className="section-padding relative bg-gradient-to-b from-background via-card/50 to-background overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:160px_160px] opacity-20 [mask-image:linear-gradient(to_bottom,transparent,black)] pointer-events-none" />
       <div className="container mx-auto">
         <div className="max-w-5xl mx-auto">
           <motion.div

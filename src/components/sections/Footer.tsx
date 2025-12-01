@@ -1,17 +1,18 @@
 import { Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
+import { Link } from "react-router-dom";
 import { MarqueeRow } from "./MarqueeSection";
 
 const footerLinks = {
   company: [
-    { name: "About Us", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Why Us", href: "#why-us" },
-    { name: "Our Team", href: "#team" },
+    { name: "About Us", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Why Us", href: "/about" },
+    { name: "Our Team", href: "/about" },
   ],
   resources: [
-    { name: "Our Promise", href: "#testimonials" },
-    { name: "Contact Us", href: "#contact" },
-    { name: "Recent Works", href: "#showcase" },
+    { name: "Our Promise", href: "/work" },
+    { name: "Contact Us", href: "/contact" },
+    { name: "Recent Works", href: "/work" },
   ],
 };
 
@@ -64,12 +65,12 @@ export const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -80,12 +81,12 @@ export const Footer = () => {
             <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
